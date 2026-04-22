@@ -20,6 +20,7 @@ export const createLink = async ({ url, userIp }) => {
   const keyHash = await Bun.password.hash(key);
 
   const spooUrl = await tryAsync(async () => {
+    if (!process.env.HOSTNAME) return null;
     const response = await fetch("https://spoo.me/", {
       method: "POST",
       headers: {
@@ -34,7 +35,7 @@ export const createLink = async ({ url, userIp }) => {
       }),
     });
     const data = await response.json();
-    return data.short_url;
+    return data.short_url || null;
   });
 
   linkQueries.insert.run(id, keyHash, url, userIp, spooUrl);

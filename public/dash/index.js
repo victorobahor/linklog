@@ -1049,11 +1049,15 @@ const views = {
           </div>
           <div class="meta-item">
             <span class="meta-label">Alternative URL</span>
+            ${response.masked?.spoodotme ? `
             <a href="${utils.escapeHtml(
               response.masked?.spoodotme
             )}" target="_blank" class="meta-value link-external">
               ${utils.escapeHtml(response.masked?.spoodotme)}
             </a>
+            ` : `
+            <span class="meta-value" style="opacity: 0.5;">Not available</span>
+            `}
           </div>
           <div class="meta-item">
             <span class="meta-label">Total visits</span>
