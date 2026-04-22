@@ -311,7 +311,7 @@ Get detailed analytics and insights from any link you share using hundreds of da
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/tiagorangel1/linklog.git
+   git clone https://github.com/victorobahor/linklog.git
    ```
 2. Navigate to the project directory:
    ```bash
