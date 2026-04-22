@@ -16,9 +16,12 @@ export const generateUniqueId = (checkFunction) => {
 };
 
 export const validateUrl = (url) => {
-  const urlPattern =
-    /^(https?|mailto):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[1][2][3][4][5][6]{1,5})?(\/.*)?$/gm;
-  return urlPattern.test(url.toLowerCase());
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch (err) {
+    return false;
+  }
 };
 
 export const tryAsync = async (fn) => {
