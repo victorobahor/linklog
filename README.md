@@ -227,8 +227,8 @@ Get detailed analytics and insights from any link you share using hundreds of da
 - `permissions`
   - geolocation, notifications, midi, camera, microphone, `background-sync`, `persistent-storage`, `clipboard-read`, `clipboard-write`, speaker
 - `mediaCapabilities`
-- h264Video
-- aacAudio
+  - h264Video
+  - aacAudio
 - `misc`
   - workerSupport
   - wasmSupport
