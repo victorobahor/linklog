@@ -330,6 +330,14 @@ Get detailed analytics and insights from any link you share using hundreds of da
    bun dev
    ```
 
+**External URL configuration:**
+
+If you are using an alternative/external facing URL, set the `HOSTNAME` environment variable when starting the server:
+
+```bash
+HOSTNAME=https://linklog.example.com bun dev
+```
+
 Note that the ratelimiting and deleteme functionality relies on the `cf-connecting-ip` header which is only available for websites behind Cloudflare.
 
 ## License
