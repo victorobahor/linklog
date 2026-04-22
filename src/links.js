@@ -21,6 +21,7 @@ export const createLink = async ({ url, userIp }) => {
 
   const spooUrl = await tryAsync(async () => {
     if (!process.env.HOSTNAME) return null;
+    const protocol = process.env.HOSTNAME.startsWith("http") ? "" : "https://";
     const response = await fetch("https://spoo.me/", {
       method: "POST",
       headers: {
@@ -28,7 +29,7 @@ export const createLink = async ({ url, userIp }) => {
         Accept: "application/json",
       },
       body: new URLSearchParams({
-        url: `${process.env.HOSTNAME}/${id}`,
+        url: `${protocol}${process.env.HOSTNAME}/${id}`,
         alias: "",
         password: "",
         "max-clicks": "",
