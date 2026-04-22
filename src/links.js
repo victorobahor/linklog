@@ -22,12 +22,18 @@ export const createLink = async ({ url, userIp }) => {
   const spooUrl = await tryAsync(async () => {
     if (!process.env.HOSTNAME) return null;
     const protocol = process.env.HOSTNAME.startsWith("http") ? "" : "https://";
+
+    const headers = {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Accept: "application/json",
+    };
+    if (process.env.SPOO_API_KEY) {
+      headers["X-API-Key"] = process.env.SPOO_API_KEY;
+    }
+
     const response = await fetch("https://spoo.me/", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Accept: "application/json",
-      },
+      headers,
       body: new URLSearchParams({
         url: `${protocol}${process.env.HOSTNAME}/${id}`,
         alias: "",
